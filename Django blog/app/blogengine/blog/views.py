@@ -14,3 +14,7 @@ def post_detail(request, slug):
 def tags_list(request):
     tags = Tag.objects.all()
     return render(request, 'blog/tags_list.html', context={'tags': tags})
+
+def tag_detail(request, slug):
+    tag = Tags.object.get(slug__iexact=slug)
+    return render(request, 'blog/tag_detail.html', context={'tag': tag})
