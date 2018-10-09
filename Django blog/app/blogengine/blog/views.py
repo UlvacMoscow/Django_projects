@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import Post, Tag
 from .utils import ObjectdetailMixin
+from .forms import TagForm
 
 
 
@@ -16,6 +17,12 @@ class PostDetail(ObjectdetailMixin, View):
 class TagDetail(ObjectdetailMixin, View):
     model = Tag
     template = 'blog/tag_detail.html'
+
+
+class TagCreate(View):
+    def get(self, request):
+        form = TagForm()
+        return render(request, 'blog/tag_create.html', context={'form': form})
 
 
 def tags_list(request):

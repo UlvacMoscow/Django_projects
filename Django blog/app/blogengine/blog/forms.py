@@ -10,7 +10,7 @@ class TagForm(forms.Form):
         new_slug = self.cleaned_data['slug'].lower()
 
         if new_slug == 'create':
-            raise ValidationError('Slug way not be "create"')
+            raise ValidationError('Slug may not be "create"')
         return new_slug
 
     def save(self):
