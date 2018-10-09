@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import get_object_or_404
@@ -23,6 +23,14 @@ class TagCreate(View):
     def get(self, request):
         form = TagForm()
         return render(request, 'blog/tag_create.html', context={'form': form})
+
+    def post(self, request):
+        bound_form = TagForm(request.POST)
+
+        if bound_form.is_valid():
+            new_tag = bound_form.save()
+            return redirect(new_tag)
+        return render(request, 'blog/tag_create.html', context={'form': bound_form})
 
 
 def tags_list(request):
