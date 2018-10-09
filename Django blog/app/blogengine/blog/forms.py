@@ -6,6 +6,9 @@ class TagForm(forms.Form):
     title = forms.CharField(max_length=50)
     slug = forms.CharField(max_length=50)
 
+    title.widget.attrs.update({'class': 'form-control'})
+    slug.widget.attrs.update({'class': 'form-control'})
+
     def clean_slug(self):
         new_slug = self.cleaned_data['slug'].lower()
 
