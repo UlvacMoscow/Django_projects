@@ -19,6 +19,12 @@ class PostCreate(View):
         form = PostForm()
         return render(request, 'blog/post_create_form.html', context={'form': form})
 
+    def post(self, request):
+        bound_form = PostForm(request.POST)
+        if bound_form.is_valid():
+            new_post = bound_form.save()
+            return redirect(new_post)
+        return redirect(request, 'blog/post_create_form.html', context={'form': bound_form})
 
 class TagDetail(ObjectDetailMixin, View):
     model = Tag
