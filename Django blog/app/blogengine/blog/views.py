@@ -5,16 +5,22 @@ from django.shortcuts import get_object_or_404
 
 from .models import Post, Tag
 from .utils import ObjectdetailMixin
-from .forms import TagForm
+from .forms import TagForm, PostForm
 
 
 
-class PostDetail(ObjectdetailMixin, View):
+class PostDetail(ObjectDetailMixin, View):
     model = Post
     template = 'blog/post_detail.html'
 
 
-class TagDetail(ObjectdetailMixin, View):
+class PostCreate(View):
+    def get(self, request):
+        form = PostForm()
+        return render(request, 'blog/post_create_form.html', context={'form': form})
+
+
+class TagDetail(ObjectDetailMixin, View):
     model = Tag
     template = 'blog/tag_detail.html'
 
