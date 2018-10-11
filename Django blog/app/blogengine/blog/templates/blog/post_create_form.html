@@ -1,4 +1,4 @@
-{% extends 'base_blog.html' %}
+{% extends 'blog/base_blog.html' %}
 
 
 {% block title %}
@@ -23,7 +23,7 @@
                 {{ field }}
             </div>
         {% endfor %}
-        <button type="submit" name="button">Create post</button>
+        <button type="submit" class="btn btn-success">Create post</button>
     </form>
 
 {% endblock content %}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Tag
+from .models import Tag, Post
 from django.core.exceptions import ValidationError
 
 

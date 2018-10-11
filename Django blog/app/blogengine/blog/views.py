@@ -4,7 +4,7 @@ from django.views.generic import View
 from django.shortcuts import get_object_or_404
 
 from .models import Post, Tag
-from .utils import ObjectdetailMixin
+from .utils import ObjectDetailMixin
 from .forms import TagForm, PostForm
 
 
