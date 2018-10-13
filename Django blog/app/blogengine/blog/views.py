@@ -32,7 +32,7 @@ class TagCreate(ObjectCreateMixin, View):
 class TagUpdate(View):
     def get(self, request, self):
         tag = Tag.objects.get(slug__iexact=slug)
-        bound_form = TagForms(insanse=tag)
+        bound_form = TagForms(instanse=tag)
         return render(request, 'blog/tag_update_form.html', context={'form': bound_form, 'tag': tag})
 
 
