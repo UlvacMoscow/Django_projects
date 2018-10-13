@@ -35,6 +35,15 @@ class TagUpdate(View):
         bound_form = TagForms(instanse=tag)
         return render(request, 'blog/tag_update_form.html', context={'form': bound_form, 'tag': tag})
 
+    def post(self, request, slug):
+        tag = Tag.objects.get(slug__iexact=slug)
+        bound_form = TagForms(request.POST, instanse=tag)
+
+        if bound_form.is_valid():
+            new_tag = bound_form.save()
+            return redirect(new_tag)
+        return render(request, 'blog/tag_update_form.html', context={'form': bound_form, 'tag': tag})
+
 
 def tags_list(request):
     tags = Tag.objects.all()
