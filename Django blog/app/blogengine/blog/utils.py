@@ -34,7 +34,7 @@ class ObjectUpdateMixin:
     model = None
     model_form = None
     template = None
-    
+
     def get(self, request, self):
         obj = self.model.objects.get(slug__iexact=slug)
         bound_form = self.model_form(instanse=obj)
@@ -48,3 +48,19 @@ class ObjectUpdateMixin:
             new_tag = bound_form.save()
             return redirect(new_tag)
         return render(request, self.template, context={'form': bound_form, self.model.__name__.lower(): obj})
+
+
+
+class ObjectDeleteMixin:
+    model = None
+    template = None
+    redirect_url = None
+
+    def get(self, request, slug):
+        obj = self.model.objects.get(slug__iexact=slug)
+        return redirect(request, self.template, context={self.model.__name__.lower(): obj})
+
+    def post(self, request, slug):
+        obj = self.model.objects.get(slug__iexact=slug)
+        obj.delete()
+        return redirect(reverse(self.redirect_url))
