@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import get_object_or_404
-from django.urls import reverse
+
 
 from .models import Post, Tag
 from .utils import *
@@ -44,7 +44,7 @@ class TagCreate(ObjectCreateMixin, View):
 
 class TagUpdate(ObjectUpdateMixin, View):
     model = Tag
-    model_form = TagForm
+    form_model = TagForm
     template = 'blog/tag_update_form.html'
 
 

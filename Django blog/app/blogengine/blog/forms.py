@@ -10,8 +10,8 @@ class TagForm(forms.ModelForm):
         fields = ['title', 'slug']
 
         widgets = {
-            'title': forms.TextInput(attrs={'class':'form-control' }),
-            'slug': forms.TextInput(attrs={'class':'form-control' })
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'slug': forms.TextInput(attrs={'class': 'form-control'})
         }
 
     def clean_slug(self):
@@ -33,7 +33,7 @@ class PostForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class':'form-control' }),
             'slug': forms.TextInput(attrs={'class':'form-control' }),
             'body': forms.TextInput(attrs={'class':'form-control' }),
-            'tags': forms.TextInput(attrs={'class':'form-control' })
+            'tags': forms.SelectMultiple(attrs={'class':'form-control' })
         }
 
     def clean_slug(self):
