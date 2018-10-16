@@ -10,7 +10,7 @@ class ObjectDetailMixin:
 
     def get(self, request, slug):
         obj = get_object_or_404(self.model, slug__iexact=slug)
-        return render(request, self.template, context={self.model.__name__.lower(): obj})
+        return render(request, self.template, context={self.model.__name__.lower(): obj, 'admin_object': obj})
 
 
 class ObjectCreateMixin:
@@ -35,7 +35,7 @@ class ObjectUpdateMixin:
     model_form = None
     template = None
 
-    def get(self, request, self):
+    def get(self, request, slug):
         obj = self.model.objects.get(slug__iexact=slug)
         bound_form = self.model_form(instanse=obj)
         return render(request, self.template , context={'form': bound_form, self.model.__name__.lower(): obj})
