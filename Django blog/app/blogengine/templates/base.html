@@ -63,13 +63,13 @@
                             <a class="page-link" href="#" tabindex="-1">Previous</a>
                         </li>
 
-                        {% for step in posts.paginator.page_range %}
+                        {% for step in page_object.paginator.page_range %}
 
-                            {% if posts.number == step %}
+                            {% if page_object.number == step %}
                                 <li class="page-item active">
                                     <a class="page-link" href="?page={{ step }}">{{ step }}<span class="sr-only">(current)</span></a>
                                 </li>
-                            {% else %}
+                            {% elif step > page_object.number|add:-3 and step < page_object.number|add:3 %}
                                 <li class="page-item">
                                     <a class="page-link" href="?page={{ step }}">{{ step }}</a>
                                 </li>
@@ -78,7 +78,7 @@
 
                         <li class="page-item">
                             <a class="page-link" href="#">Next</a>
-                        </li>                     
+                        </li>
                     </ul>
                 </nav>
             </div>

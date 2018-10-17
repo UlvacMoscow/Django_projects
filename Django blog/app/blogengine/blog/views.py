@@ -75,4 +75,4 @@ def posts_list(request):
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
 
-    return render(request, 'blog/index.html', context={'posts' : page})
+    return render(request, 'blog/index.html', context={'page_object' : page})
