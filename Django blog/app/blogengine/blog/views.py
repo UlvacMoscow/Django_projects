@@ -9,6 +9,7 @@ from .utils import *
 from .forms import TagForm, PostForm
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 
 
 
@@ -69,4 +70,9 @@ def tags_list(request):
 
 def posts_list(request):
     posts = Post.objects.all()
-    return render(request, 'blog/index.html', context={'posts' : posts})
+    paginator = Paginator(posts, 2)
+
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
+
+    return render(request, 'blog/index.html', context={'posts' : page})
