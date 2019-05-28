@@ -16,3 +16,23 @@ class User(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length=128)
     members = models.ManyToManyField(User, related_name='groups')
+
+
+class Vampire(models.Model):
+    name = models.CharField(max_length=128)
+    damage = models.IntegerField()
+    groups = models.ManyToManyField(GroupVampire, related_name='inGroupVampire')
+
+
+class GroupVampire(models.Model):
+    name = models.CharField(max_length=128)
+    flying = models.BooleanField(default=True)
+
+
+class Zombie(models.Models):
+    name = models.CharField(max_length=128)
+    groups = models.ManyToManyField(GroupZombie, related_name='inGroupZombie')
+
+
+class GroupZombie(models.Model):
+    name = models.CharField(max_length=128)
