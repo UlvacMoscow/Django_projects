@@ -36,3 +36,19 @@ class Zombie(models.Models):
 
 class GroupZombie(models.Model):
     name = models.CharField(max_length=128)
+
+
+class Ghost(models.Model):
+    name = models.CharField(max_length=128)
+
+
+class GroupGhost(models.Model):
+    name = models.CharField(max_length=128)
+    members = models.ManyToManyField(Ghost, through='Ghostship')
+
+
+class Ghostship(models.Model):
+    ghost = models.ForeignKey(Ghost, on_delete=models.CASCADE)
+    GroupGhost = models.ForeignKey(GroupGhost, on_delete=models.CASCADE)
+    data_joined = models.DateField()
+    invite_reason = models.CharField()
