@@ -18,24 +18,24 @@ class Group(models.Model):
     members = models.ManyToManyField(User, related_name='groups')
 
 
+class GroupVampire(models.Model):
+    name = models.CharField(max_length=128)
+    flying = models.BooleanField(default=True)
+
+
 class Vampire(models.Model):
     name = models.CharField(max_length=128)
     damage = models.IntegerField()
     groups = models.ManyToManyField(GroupVampire, related_name='inGroupVampire')
 
 
-class GroupVampire(models.Model):
-    name = models.CharField(max_length=128)
-    flying = models.BooleanField(default=True)
-
-
-class Zombie(models.Models):
-    name = models.CharField(max_length=128)
-    groups = models.ManyToManyField(GroupZombie, related_name='inGroupZombie')
-
-
 class GroupZombie(models.Model):
     name = models.CharField(max_length=128)
+
+
+class Zombie(models.Model):
+    name = models.CharField(max_length=128)
+    groups = models.ManyToManyField(GroupZombie, related_name='inGroupZombie')
 
 
 class Ghost(models.Model):
@@ -51,4 +51,4 @@ class Ghostship(models.Model):
     ghost = models.ForeignKey(Ghost, on_delete=models.CASCADE)
     GroupGhost = models.ForeignKey(GroupGhost, on_delete=models.CASCADE)
     data_joined = models.DateField()
-    invite_reason = models.CharField()
+    invite_reason = models.CharField(max_length=128)
