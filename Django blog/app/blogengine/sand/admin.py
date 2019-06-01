@@ -4,7 +4,7 @@ from sand.models import Ghost, Ghostship, Group, GroupGhost, GroupVampire, Group
 
 
 class GhostAdmin(admin.ModelAdmin):
-    list_display = ('name')
+    list_display = ['name']
 
 
 class GhostshipAdmin(admin.ModelAdmin):
@@ -12,7 +12,9 @@ class GhostshipAdmin(admin.ModelAdmin):
 
 
 class GroupGhostAdmin(admin.ModelAdmin):
-    list_display = ('name', 'members')
+    list_display = ['name']
 
 
-admin.site.register(Ghost, GhostAdmin, Ghostship, GhostshipAdmin, GroupGhost, GroupGhostAdmin)
+admin.site.register(Ghost, GhostAdmin)
+admin.site.register(Ghostship, GhostshipAdmin)
+admin.site.register(GroupGhost, GroupGhostAdmin)
