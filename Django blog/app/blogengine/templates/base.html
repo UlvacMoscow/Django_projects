@@ -23,6 +23,7 @@
         {% endblock title %}
     </title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -56,6 +57,9 @@
                 {% block content %}
                     Text
                 {% endblock content %}
+                {% block ghost %}
+
+                {% endblock ghost %}
 
                 {% if is_paginated %}
                     <nav aria-label="...">

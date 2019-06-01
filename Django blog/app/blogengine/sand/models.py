@@ -13,6 +13,7 @@ class User(models.Model):
         # user.group_set.all() если related name не задан
         pass
 
+
 class Group(models.Model):
     name = models.CharField(max_length=128)
     members = models.ManyToManyField(User, related_name='groups')
