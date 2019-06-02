@@ -2,6 +2,11 @@ from django.db import models
 
 # Create your models here.
 
+
+class GroupElements(models.Model):
+    name = models.CharField(max_length=128)
+
+
 class User(models.Model):
     name = models.CharField(max_length=128)
 
@@ -43,9 +48,14 @@ class Ghost(models.Model):
     name = models.CharField(max_length=128)
 
 
+    def __str__(self):
+        return self.name
+
+
 class GroupGhost(models.Model):
     name = models.CharField(max_length=128)
     members = models.ManyToManyField(Ghost, through='Ghostship')
+    element = models.ForeignKey(GroupElements, on_delete=models.CASCADE)
 
 
 class Ghostship(models.Model):
