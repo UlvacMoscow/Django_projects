@@ -1,5 +1,5 @@
 from django.contrib import admin
-from sand.models import Ghost, Ghostship, Group, GroupGhost, GroupVampire, GroupZombie, User, Vampire, Zombie
+from sand.models import Ghost, Ghostship, Group, GroupGhost, GroupVampire, GroupZombie, User, Vampire, Zombie, GroupElements
 # Register your models here.
 
 
@@ -18,3 +18,9 @@ class GroupGhostAdmin(admin.ModelAdmin):
 admin.site.register(Ghost, GhostAdmin)
 admin.site.register(Ghostship, GhostshipAdmin)
 admin.site.register(GroupGhost, GroupGhostAdmin)
+
+class GroupElementsAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+
+admin.site.register(GroupElements, GroupElementsAdmin)
