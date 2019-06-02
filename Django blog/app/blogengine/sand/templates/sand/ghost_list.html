@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Ghosts list
+{% endblock title %}
+{% block ghost %}
+    {% for object in object_list %}
+    <p>GhostBlock</p>
+    <p>===============</p>
+    <p>{{ object.name }}</p>
+    {% endfor %}
+{% endblock %}
