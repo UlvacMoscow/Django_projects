@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='groupghost',
             name='element',
-            field=models.ForeignKey(default=builtins.id, on_delete=django.db.models.deletion.CASCADE, to='sand.GroupElements'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='sand.GroupElements'),
             preserve_default=False,
         ),
     ]
