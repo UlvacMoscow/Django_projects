@@ -51,6 +51,9 @@ class Ghost(models.Model):
     def __str__(self):
         return self.name
 
+    def my_elements(self):
+        self.group_set.all()
+
 
 class GroupGhost(models.Model):
     name = models.CharField(max_length=128)
