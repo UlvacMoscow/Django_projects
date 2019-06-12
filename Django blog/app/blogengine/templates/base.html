@@ -101,7 +101,11 @@
     {% endif %}
 
 <footer id="app">
-    <button type="button" name="button">Тестовая ${ test }</button>
+    <button type="button" v-on:click="clicker()" name="button">Тестовая ${ test }</button>
+    <div class="clicker">
+        <p v-if="control"> info test </p>
+        <p v-else>change info </p>
+    </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
@@ -109,7 +113,13 @@
         delimiters: ['${', '}'],
         el: '#app',
         data: {
-            test: 'test1'
+            test: 'test1',
+            control: false,
+        },
+        methods: {
+            clicker()     {
+                this.control = !this.control;
+            }
         }
     })
 </script>
