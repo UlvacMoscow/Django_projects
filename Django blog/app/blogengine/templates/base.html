@@ -100,6 +100,18 @@
         </div>
     {% endif %}
 
-
+<footer id="app">
+    <button type="button" name="button">Тестовая ${ test }</button>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    new Vue({
+        delimiters: ['${', '}'],
+        el: '#app',
+        data: {
+            test: 'test1'
+        }
+    })
+</script>
 </body>
 </html>
