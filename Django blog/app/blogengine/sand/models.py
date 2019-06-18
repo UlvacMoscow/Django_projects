@@ -52,7 +52,7 @@ class Ghost(models.Model):
         return self.name
 
     def my_elements(self):
-        self.group_set.all()
+        return self.group_set.all()
 
 
 class GroupGhost(models.Model):

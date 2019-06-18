@@ -106,6 +106,8 @@
         <p v-if="control"> info test </p>
         <p v-else>change info </p>
     </div>
+    <input type="text" name="name" v-model="name" >
+    <button type="button" name="add_ghost" v-on:click="add()">add ghost</button>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
@@ -115,10 +117,14 @@
         data: {
             test: 'test1',
             control: false,
+            name: '',
         },
         methods: {
             clicker()     {
                 this.control = !this.control;
+            },
+            add() {
+                console.log("add ghost " + this.name);
             }
         }
     })

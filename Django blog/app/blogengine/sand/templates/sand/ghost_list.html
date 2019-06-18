@@ -9,7 +9,12 @@
     <p>GhostBlock</p>
     <p>===============</p>
     <p>{{ object.name }}</p>
-    
+
     {% endfor %}
+    <p>вызов обратной связь(ForeignKey) из Ghostship</p>
+    <button type="button" name="button" class="callback"> Вызвать обратную связь</button>
+    <div class="callback">
+
+    </div>
     <p>{{ object.my_elem }}</p>
 {% endblock %}

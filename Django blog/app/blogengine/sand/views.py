@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Ghost
 from django.views import generic
-from django.shortcuts import render 
+from django.shortcuts import render
 
 # Create your views here.
 
@@ -11,5 +11,5 @@ class GhostListView(generic.ListView):
 
 
 def show_elem(request):
-    context = { 'my_elem' :Ghost.my_elements}
+    context = { 'my_elem' :Ghost.my_elements()}
     return render(request, 'ghost_list.html', context)
