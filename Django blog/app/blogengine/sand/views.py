@@ -38,6 +38,6 @@ def vampire_create_view(request):
                 damage = form.cleaned_data.get('damage')
             )
         return HttpResponseRedirect("/vampires/")
-    template_name = ''
+    template_name = 'sand/create_vampire.html'
     context = {}
     return render(request, template_name, context)
