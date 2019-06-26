@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    vampire list
+{% endblock title %}
+{% block ghost %}
+    {% for object in object_list %}
+    <p>vampire list</p>
+    <p>===============</p>
+    <p>{{ object.name }}</p> <br>
+    <p>{{ object.damage }}</p> <br>
+    <p>{{ object.health }}</p> <br>
+    <p>{{ object.groups }}</p> <br>
+    {% endfor %}
+{% endblock %}

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Ghost, Vampire, Zombie
 from django.views.generic import ListView, TemplateView
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 from .forms import VampireCreateForm
 # Create your views here.
@@ -36,3 +37,7 @@ def vampire_create_view(request):
                 name = form.cleaned_data.get('name'),
                 damage = form.cleaned_data.get('damage')
             )
+        return HttpResponseRedirect("/vampires/")
+    template_name = ''
+    context = {}
+    return render(request, template_name, context)
