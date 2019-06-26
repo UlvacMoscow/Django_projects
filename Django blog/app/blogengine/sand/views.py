@@ -3,6 +3,7 @@ from .models import Ghost, Vampire, Zombie
 from django.views.generic import ListView, TemplateView
 from django.shortcuts import render
 
+from .forms import VampireCreateForm
 # Create your views here.
 
 class GhostListView(ListView):
@@ -26,3 +27,12 @@ class VampireListView(ListView):
 def show_elem(request):
     context = { 'my_elem' :Ghost.my_elements()}
     return render(request, 'ghost_list.html', context)
+
+def vampire_create_view(request):
+    if request.method == 'POST':
+        form = VampireCreateForm()
+        if form.is_valid():
+            obj = Vampire.objects.create(
+                name = form.cleaned_data.get('name'),
+                damage = form.cleaned_data.get('damage')
+            )

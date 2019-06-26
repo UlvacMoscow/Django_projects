@@ -32,6 +32,7 @@ class GroupVampire(models.Model):
 class Vampire(models.Model):
     name = models.CharField(max_length=128)
     damage = models.IntegerField()
+    health = models.IntegerField()
     groups = models.ManyToManyField(GroupVampire, related_name='inGroupVampire')
 
 
