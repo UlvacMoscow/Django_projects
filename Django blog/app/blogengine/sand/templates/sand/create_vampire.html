@@ -6,9 +6,13 @@
 {% block ghost %}
    <h1>add vampire</h1>
 
-   <form class="" action="index.html" method="POST"> {% csrf_token %}
+   <form class="" method="POST"> {% csrf_token %}
        <input type="text" name="name" placeholder="vampire name"><br>
        <input type="text" name="damage" placeholder="vampire damage"><br>
-       <button type="submit" name="button">SAVE</button>
+       <input type="text" name="health" placeholder="vampire health"><br>
+       <input type="text" name="groups" placeholder="vampire groups"><br>
+
+
+       <button type="submit">SAVE</button>
    </form>
 {% endblock %}

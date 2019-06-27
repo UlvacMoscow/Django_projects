@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Ghost, Vampire, Zombie
+from .models import Ghost, Vampire, Zombie, GroupVampire
 from django.views.generic import ListView, TemplateView
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
@@ -30,14 +30,22 @@ def show_elem(request):
     return render(request, 'ghost_list.html', context)
 
 def vampire_create_view(request):
+    print('call form')
+    groups = GroupVampire.objects.last()
     if request.method == 'POST':
+        print('call request')
         form = VampireCreateForm()
+
         if form.is_valid():
+            print(form.is_valid())
             obj = Vampire.objects.create(
                 name = form.cleaned_data.get('name'),
-                damage = form.cleaned_data.get('damage')
+                damage = form.cleaned_data.get('damage'),
+                health = form.cleaned_data.get('health'),
+                groups = groups
+
             )
-        return HttpResponseRedirect("/vampires/")
+        # return HttpResponseRedirect("sand/vampires")
     template_name = 'sand/create_vampire.html'
     context = {}
     return render(request, template_name, context)
