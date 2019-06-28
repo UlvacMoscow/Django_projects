@@ -46,6 +46,6 @@ def vampire_create_view(request):
 
             )
         # return HttpResponseRedirect("sand/vampires")
-    template_name = 'sand/create_vampire.html'
+    # template_name = 'sand/create_vampire.html'
     context = {}
     return render(request, template_name, context)
