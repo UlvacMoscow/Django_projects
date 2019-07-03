@@ -19,6 +19,7 @@
           src="https://code.jquery.com/jquery-2.2.4.js"
           integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
           crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -131,9 +132,9 @@
         methods: {
             add() {
                 console.log('call');
-                var csrf_token = $('div .offset-md-2 input').val();
+                // var csrf_token = $('div .offset-md-2 input').val();
                 var query = '/sand/vampires/create/';
-                // var csrf_token = $cookies.get('csrftoken');
+                var csrf_token = Cookies.get("csrftoken");
                 var headers = {'Content-type':'application/json','Accept':'application/json', 'X-Requested-With': 'XMLHttpRequest','X-CSRFToken':csrf_token};
                 var data = {
                     'name': this.name,

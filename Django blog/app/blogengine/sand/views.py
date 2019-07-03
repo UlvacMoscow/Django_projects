@@ -34,7 +34,7 @@ def vampire_create_view(request, *args, **kwargs):
     groups = GroupVampire.objects.last()
     if request.method == 'POST':
         print('call request')
-        print(request.data)
+        print(dir(request.body))
         form = VampireCreateForm()
 
         if form.is_valid():
