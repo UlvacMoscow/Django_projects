@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Ghost, Vampire, Zombie, GroupVampire
 from django.views.generic import ListView, TemplateView
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 
 from .forms import VampireCreateForm
 # Create your views here.
@@ -29,14 +29,16 @@ def show_elem(request):
     context = { 'my_elem' :Ghost.my_elements()}
     return render(request, 'ghost_list.html', context)
 
-def vampire_create_view(request):
+def vampire_create_view(request, *args, **kwargs):
     print('call form')
     groups = GroupVampire.objects.last()
     if request.method == 'POST':
         print('call request')
+        print(request.data)
         form = VampireCreateForm()
 
         if form.is_valid():
+            print('form is valid');
             print(form.is_valid())
             obj = Vampire.objects.create(
                 name = form.cleaned_data.get('name'),
@@ -48,4 +50,4 @@ def vampire_create_view(request):
         # return HttpResponseRedirect("sand/vampires")
     # template_name = 'sand/create_vampire.html'
     context = {}
-    return render(request, template_name, context)
+    return JsonResponse({'text':'ok'})
