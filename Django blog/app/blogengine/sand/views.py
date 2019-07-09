@@ -3,6 +3,7 @@ from .models import Ghost, Vampire, Zombie, GroupVampire
 from django.views.generic import ListView, TemplateView
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
+import json
 
 from .forms import VampireCreateForm
 # Create your views here.
@@ -31,6 +32,10 @@ def show_elem(request):
 
 def vampire_create_view(request, *args, **kwargs):
     print('call form')
+    print(request.body)
+    temp_data = request.body.decode('utf-8')
+    data = json.loads(temp_data)
+    print(data)
     groups = GroupVampire.objects.last()
     if request.method == 'POST':
         print('call request')

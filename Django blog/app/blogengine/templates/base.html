@@ -136,13 +136,13 @@
                 var query = '/sand/vampires/create/';
                 var csrf_token = Cookies.get("csrftoken");
                 var headers = {'Content-type':'application/json','Accept':'application/json', 'X-Requested-With': 'XMLHttpRequest','X-CSRFToken':csrf_token};
-                var data = {
-                    'name': this.name,
-                    'damage': this.damage,
-                    'health': this.health,
-                    'groups': this.groups
-                };
-                console.log("add vampire "+csrf_token+' ' + JSON.stringify(data));
+                // var data = {
+                //     'name': this.name,
+                //     'damage': this.damage,
+                //     'health': this.health,
+                //     'groups': this.groups
+                // };
+                // console.log("add vampire "+csrf_token+' ' + JSON.stringify(data));
 
                 axios({
                     method: 'post',
