@@ -36,22 +36,28 @@ def vampire_create_view(request, *args, **kwargs):
     temp_data = request.body.decode('utf-8')
     data = json.loads(temp_data)
     print(data)
+    data = {
+        'name': data['name'],
+        'damage': data['damage'],
+        'health': data['health'],
+        'groups': data['groups'],
+    }
     groups = GroupVampire.objects.last()
     if request.method == 'POST':
         print('call request')
         print(dir(request.body))
-        form = VampireCreateForm()
+        form = VampireCreateForm(request.POST)
 
         if form.is_valid():
             print('form is valid');
-            print(form.is_valid())
-            obj = Vampire.objects.create(
-                name = form.cleaned_data.get('name'),
-                damage = form.cleaned_data.get('damage'),
-                health = form.cleaned_data.get('health'),
-                groups = groups
-
-            )
+            # obj = Vampire.objects.create(
+            #     name = form.cleaned_data.get('name'),
+            #     damage = form.cleaned_data.get('damage'),
+            #     health = form.cleaned_data.get('health'),
+            #     # groups = groups
+            # )
+            print(dir(form))
+        print(form.errors)
         # return HttpResponseRedirect("sand/vampires")
     # template_name = 'sand/create_vampire.html'
     context = {}
