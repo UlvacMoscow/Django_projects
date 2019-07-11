@@ -40,13 +40,13 @@ def vampire_create_view(request, *args, **kwargs):
         'name': data['name'],
         'damage': data['damage'],
         'health': data['health'],
-        'groups': data['groups'],
+        'groups': [data['groups']],
     }
     groups = GroupVampire.objects.last()
     if request.method == 'POST':
         print('call request')
         print(dir(request.body))
-        form = VampireCreateForm(request.POST)
+        form = VampireCreateForm(data)
 
         if form.is_valid():
             print('form is valid');
@@ -57,8 +57,11 @@ def vampire_create_view(request, *args, **kwargs):
             #     # groups = groups
             # )
             print(dir(form))
+            form.save()
+            print('vampire created')
         print(form.errors)
         # return HttpResponseRedirect("sand/vampires")
     # template_name = 'sand/create_vampire.html'
     context = {}
     return JsonResponse({'text':'ok'})
+    #try https://stackoverflow.com/questions/16443029/cant-save-a-form-in-django-object-has-no-attribute-save/16443072
