@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import Ghost, Vampire, Zombie, GroupVampire
 from django.views.generic import ListView, TemplateView
-from django.shortcuts import render
-from django.http import HttpResponseRedirect, JsonResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, JsonResponse, response
 import json
 
 from .forms import VampireCreateForm
@@ -61,4 +61,9 @@ def vampire_create_view(request, *args, **kwargs):
         # return HttpResponseRedirect("sand/vampires")
     # template_name = 'sand/create_vampire.html'
     context = {}
-    return JsonResponse({'text':'ok'})
+    # return JsonResponse({'text':'ok'})
+    return redirect('test_redirect/')
+
+
+def test_redirect(request):
+    return render(request, 'sand/test_redirect.html')
