@@ -2,7 +2,7 @@ from django import forms
 from .models import Vampire
 
 
-class VampireCreateForm(forms.Form):
+class VampireCreateForm(forms.ModelForm):
     class Meta:
         model = Vampire
         fields = ['name', 'damage', 'health', 'groups']
