@@ -57,20 +57,16 @@ def vampire_create_view(request, *args, **kwargs):
             #     # groups = groups
             # )
             print(dir(form))
-            form.save()
+            vam = form.save()
             print('vampire created')
+            return redirect(vam)
         print(form.errors)
         # return HttpResponseRedirect("sand/vampires")
     # template_name = 'sand/create_vampire.html'
     context = {}
-<<<<<<< HEAD
-    # return JsonResponse({'text':'ok'})
-    return redirect('test_redirect/')
+    return JsonResponse({'text':'ok'})
+
 
 
 def test_redirect(request):
     return render(request, 'sand/test_redirect.html')
-=======
-    return JsonResponse({'text':'ok'})
-    #try https://stackoverflow.com/questions/16443029/cant-save-a-form-in-django-object-has-no-attribute-save/16443072
->>>>>>> b7aae203fb6528d8d146cab923664988b0d80ef4

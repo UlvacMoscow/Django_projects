@@ -69,6 +69,9 @@
 
 
                     <button v-on:click="add()" type="submit">SAVE</button>
+                    {% for field in form %}
+                        {{field}}
+                    {% endfor%}
                 </div>
 
                 {% block content %}
