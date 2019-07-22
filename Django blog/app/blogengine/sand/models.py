@@ -6,6 +6,9 @@ from django.db import models
 class GroupElements(models.Model):
     name = models.CharField(max_length=128)
 
+    def __str__(self):
+        return self.name
+
 
 class User(models.Model):
     name = models.CharField(max_length=128)
@@ -23,10 +26,15 @@ class Group(models.Model):
     name = models.CharField(max_length=128)
     members = models.ManyToManyField(User, related_name='groups')
 
+    def __str__(self):
+        return self.name
 
 class GroupVampire(models.Model):
     name = models.CharField(max_length=128)
     flying = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Vampire(models.Model):
@@ -35,14 +43,23 @@ class Vampire(models.Model):
     health = models.IntegerField()
     groups = models.ManyToManyField(GroupVampire, related_name='inGroupVampire')
 
+    def __str__(self):
+        return self.name
+
 
 class GroupZombie(models.Model):
     name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.name
 
 
 class Zombie(models.Model):
     name = models.CharField(max_length=128)
     groups = models.ManyToManyField(GroupZombie, related_name='inGroupZombie')
+
+    def __str__(self):
+        return self.name
 
 
 class Ghost(models.Model):
@@ -61,9 +78,13 @@ class GroupGhost(models.Model):
     members = models.ManyToManyField(Ghost, through='Ghostship')
     element = models.ForeignKey(GroupElements, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class Ghostship(models.Model):
     ghost = models.ForeignKey(Ghost, on_delete=models.CASCADE)
     GroupGhost = models.ForeignKey(GroupGhost, on_delete=models.CASCADE)
     data_joined = models.DateField()
     invite_reason = models.CharField(max_length=128)
+
